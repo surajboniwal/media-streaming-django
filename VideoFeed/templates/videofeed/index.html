@@ -1,0 +1,21 @@
+{% extends 'videofeed/base.html' %}
+
+
+{% block main %}
+
+<section class="videos">
+    
+    {% for video in videolist %}
+        <div class="video">
+            <img src="/media/{{video.thumbnail}}" class="thumbnail">
+            <div class="video-body">
+                <a href="{% url 'view' video.id %}" class="video-title">{{video.title}}</a>
+                <a href="#" class="video-creator">{{video.creator.username}} on {{video.upload_date}}</a>
+                <p class="video-description">{{video.description | truncatechars:500}}</p>
+            </div>
+        </div>
+    {% endfor %}
+    
+    </section>
+    
+{% endblock main %}

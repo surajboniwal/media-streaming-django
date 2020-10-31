@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <!-- Google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+        <!-- Main css -->
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+
+        <!-- Title -->
+        {% if title %}
+            <title>VideoFeed | {{ title }}</title>
+        {% else %}
+            <title>VideoFeed</title>
+        {% endif %}
+            
+        
+    </head>
+
+    <body>
+        <header>
+            <a href="{% url 'index' %}" class="brand">VideoFeed</a>
+            <nav>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated  %}
+                        <li class="nav-item">
+                            <a href="#" class="dropdown-button nav-link">
+                                {{user.username}}
+                            </a>
+                            <ul class="dropdown">
+                                <li class="dropdown-item">
+                                    <a href="{% url 'upload' %}" class="dropdown-link">Upload</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="{% url 'library' %}" class="dropdown-link">Library</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="{% url 'profile' %}" class="dropdown-link">Profile</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="{% url 'logout' %}" class="dropdown-link">Logout</a>
+                                </li>
+                            </ul>
+                        </li>    
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'register' %}" class="nav-link">Register</a>
+                        </li>
+                    {% endif %}                    
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            
+            {% block main %}
+                
+            {% endblock main %}
+                
+        </main>
+
+    </body>
+</html>

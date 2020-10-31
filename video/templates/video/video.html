@@ -1,0 +1,13 @@
+{% extends 'videofeed/base.html' %}
+
+
+{% block main %}
+    <section class="videoplayer">
+        <video style="margin-top: 20px; box-shadow: 2px 2px 10px #145;" width="1200" height="600" controls>
+            <source src="/media/{{video.url}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="videoplayer-title">{{video.title}}</p>
+        <p class="videoplayer-creator">{{video.user.username}}</p>
+    </section>
+{% endblock main %}

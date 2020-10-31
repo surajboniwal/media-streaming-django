@@ -1,0 +1,22 @@
+{% extends 'videofeed/base.html' %}
+
+
+{% block main %}
+    <div class="box">
+        <p class="heading">Log in</p>
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <!-- <input type="email" placeholder="Enter email" name="email">
+            <input type="password" placeholder="Enter password" name="password"> -->
+
+            {{form.username}}
+
+            {{form.password}}
+
+            <input type="submit" value="Log in">
+        </form>
+        <p class="or">OR</p>
+        <a href="#" class="goto">Register For FREE</a>
+    </div>
+{% endblock main %}
+    
